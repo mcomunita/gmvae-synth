@@ -85,7 +85,7 @@ class GMVAE_Trainer(BaseTrainer):
 
     def _data_pipe(self, data, target, data_idx):
         if self.label_idx is not None:
-            batch_label_idx = np.nonzero(np.in1d(data_idx, self.label_idx))
+            batch_label_idx = np.nonzero(np.in1d(data_idx.cpu(), self.label_idx))
         else:
             batch_label_idx = None
         y_ins, y_pitch_class, y_pitch, y_dyn = target[0], target[1], target[2], target[3]
